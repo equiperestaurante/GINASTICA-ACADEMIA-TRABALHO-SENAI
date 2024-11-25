@@ -1,0 +1,31 @@
+<section class="container">
+    <section class="d-flex justify-content-between mt-4">
+        <h2>Página Incial dos planos</h2>
+        <a href="/planos/criar" class="btn btn-primary">Cadastrar novo plano</a>
+    </section>
+</section>
+
+    <div class="container-fluid mb-4 row row-cols-1 row-cols-md-3 g-4 mt-2">
+        {{#each dados}} <!--Cada dado, mutiplicando a quantidade de produtos-->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{dataValues.nome_do_plano}}</h5>
+                    <p class="card-text m-0">ID: {{dataValues.id}}</p>
+                    <p class="card-text m-0">Preço: {{dataValues.preco}}</p>
+                    <p class="card-text m-0">Descrição: {{dataValues.descricao}}</p>
+                </div>
+
+                <div class="card-footer text-body-secondary">
+                  <a href="" class="btn btn-danger" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modal{{dataValues.id}}">Excluir</a>
+                </div>
+            </div>
+        </div>
+          {{>modalDelete2 idItem=dataValues.id}}
+        {{else}}
+        <p>Nenhum plano cadastrado ainda.</p> 
+
+        {{/each}}
+    </div>
